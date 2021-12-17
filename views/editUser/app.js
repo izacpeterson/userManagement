@@ -11,6 +11,7 @@ const User = {
         <div class="flex flex-col  w-2/12 p-2"><h2 class="">Age: </h2><input type="text" v-model="age" class="border bg-gray-100"/></div>
         <button class="p-2 m-2 text-white bg-blue-500" @click="submitData">Save</button>
         <button class="p-2 m-2 text-white bg-rose-500" @click="cancel">Cancel</button>
+        <button class="p-2 m-2 text-white bg-rose-500" @click="cancel">Delete</button>
         `,
   data() {
     return {
