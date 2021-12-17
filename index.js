@@ -22,7 +22,11 @@ app.get("/getUser", (req, res) => {
   let users = fs.readFileSync("./data/users.json");
   users = users.toString();
   users = JSON.parse(users);
-  res.send(users[id - 1]);
+  users.forEach((user) => {
+    if (user.id == id) {
+      res.send(user);
+    }
+  });
 });
 
 //Updates a signle user, found by ID
@@ -32,7 +36,12 @@ app.post("/updateUser", (req, res) => {
   users = users.toString();
   users = JSON.parse(users);
 
-  users[newUser.id - 1] = newUser;
+  //   users[newUser.id - 1] = newUser;
+  users.forEach((user, index) => {
+    if (user.id == newUser.id) {
+      users[index] = newUser;
+    }
+  });
 
   fs.writeFileSync("./data/users.json", JSON.stringify(users));
 
@@ -53,6 +62,23 @@ app.post("/newUser", (req, res) => {
   fs.writeFileSync("./data/users.json", JSON.stringify(users));
 
   res.send("request received");
+});
+
+//Delete a user
+app.get("/deleteUser", (req, res) => {
+  let users = fs.readFileSync("./data/users.json");
+  users = users.toString();
+  users = JSON.parse(users);
+
+  //   users.splice(req.query.id, 1);
+  users.forEach((user, index) => {
+    if (user.id == req.query.id) {
+      users.splice(index, 1);
+    }
+  });
+
+  fs.writeFileSync("./data/users.json", JSON.stringify(users));
+  res.redirect("/");
 });
 
 //Server listening

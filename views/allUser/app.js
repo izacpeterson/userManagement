@@ -20,7 +20,7 @@ const User = {
         <h2 class="w-1/6">{{user.email}}</h2>
         <h2 class="w-1/12">{{user.age}}</h2>
         <a :href="'/editUser?id=' + user.id"><button class="p-2 m-2 text-white bg-blue-500">Edit User</button></a>
-        <a :href="'/editUser?id=' + user.id"><button class="p-2 m-2 text-white bg-rose-500">Delete User</button></a>
+        <a :href="'/deleteUser?id=' + user.id"><button class="p-2 m-2 text-white bg-rose-500">Delete User</button></a>
     </li>`,
   data() {
     return {

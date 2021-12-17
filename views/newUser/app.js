@@ -58,7 +58,7 @@ const App = Vue.createApp({
     User,
   },
   template: `
-  <header class="p-5 bg-blue-500 text-white"><h1 class="text-4xl">Izac User Management</h1></header>
+  <header class="p-5 bg-gray-800 text-white"><h1 class="text-4xl">Izac User Management</h1></header>
   <main>
     <ul class="p-5">
         <User></User>

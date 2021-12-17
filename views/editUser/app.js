@@ -11,7 +11,8 @@ const User = {
         <div class="flex flex-col  w-2/12 p-2"><h2 class="">Age: </h2><input type="text" v-model="age" class="border bg-gray-100"/></div>
         <button class="p-2 m-2 text-white bg-blue-500" @click="submitData">Save</button>
         <button class="p-2 m-2 text-white bg-rose-500" @click="cancel">Cancel</button>
-        <button class="p-2 m-2 text-white bg-rose-500" @click="cancel">Delete</button>
+        <a :href="'/deleteUser?id=' + id"><button class="p-2 m-2 text-white bg-rose-500">Delete User</button></a>
+
         `,
   data() {
     return {
@@ -71,7 +72,7 @@ const App = Vue.createApp({
     User,
   },
   template: `
-  <header class="p-5 bg-blue-500 text-white"><h1 class="text-4xl">Izac User Management</h1></header>
+  <header class="p-5 bg-gray-800 text-white"><h1 class="text-4xl">Izac User Management</h1></header>
   <main>
     <ul class="p-5">
         <User></User>
