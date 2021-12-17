@@ -2,6 +2,8 @@ const express = require("express");
 const fs = require("fs");
 const app = express();
 
+const PORT = process.env.PORT || 3000;
+
 //Servers html pages
 app.use("/newUser", express.static("views/newUser"));
 app.use("/", express.static("views/allUser"));
@@ -54,6 +56,6 @@ app.post("/newUser", (req, res) => {
 });
 
 //Server listening
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log("Server listening on 3000");
 });
