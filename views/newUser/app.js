@@ -45,7 +45,7 @@ const User = {
         .then((result) => console.log(result))
         .catch((error) => console.log("error", error));
 
-      document.location.href = "/";
+      // document.location.href = "/";
     },
     cancel() {
       document.location.href = "/";
