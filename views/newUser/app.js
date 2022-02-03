@@ -6,7 +6,8 @@ async function fetchData(url, callback) {
 
 const User = {
   template: `
-        <div class="flex flex-col  w-2/12 p-2"><h2 class="">Name: </h2><input type="text" v-model="name" class="border bg-gray-100"/></div>
+        <div class="flex flex-col  w-2/12 p-2"><h2 class="">First Name: </h2><input type="text" v-model="first" class="border bg-gray-100"/></div>
+        <div class="flex flex-col  w-2/12 p-2"><h2 class="">Last Name: </h2><input type="text" v-model="last" class="border bg-gray-100"/></div>
         <div class="flex flex-col w-2/12 p-2"><h2 class="">Email: </h2><input type="text" v-model="email" class="border bg-gray-100"/></div>
         <div class="flex flex-col  w-2/12 p-2"><h2 class="">Age: </h2><input type="text" v-model="age" class="border bg-gray-100"/></div>
         <button class="p-2 m-2 text-white bg-blue-500" @click="submitData">Save</button>
@@ -14,7 +15,8 @@ const User = {
         `,
   data() {
     return {
-      name: "",
+      first: "",
+      last: "",
       email: "",
       age: "",
       id: "",
@@ -22,13 +24,14 @@ const User = {
   },
   methods: {
     submitData() {
-      console.log(this.name);
+      // console.log(this.name);
 
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
 
       var raw = JSON.stringify({
-        name: this.name,
+        first: this.first,
+        last: this.last,
         email: this.email,
         age: this.age,
       });

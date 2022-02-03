@@ -9,18 +9,20 @@ fetchData("/getAllUsers", (data) => {
 const User = {
   template: `
       <li class="flex">
-        <h2 class="w-1/12 text-xl underline">ID</h2>
-        <h2 class="w-1/6 text-xl underline">Name</h2>
+        <h2 class="w-1/6 text-xl underline">ID</h2>
+        <h2 class="w-1/6 text-xl underline">First Name</h2>
+        <h2 class="w-1/6 text-xl underline">Last Name</h2>
         <h2 class="w-1/6 text-xl underline">Email</h2>
         <h2 class="w-1/12 text-xl underline">Age</h2>
     </li>
     <li v-for="user in users" class="flex items-center">
-        <h2 class="w-1/12">{{user.id}}</h2>
-        <h2 class="w-1/6">{{user.name}}</h2>
+        <h2 class="w-1/6">{{user._id}}</h2>
+        <h2 class="w-1/6">{{user.first}}</h2>
+        <h2 class="w-1/6">{{user.last}}</h2>
         <h2 class="w-1/6">{{user.email}}</h2>
         <h2 class="w-1/12">{{user.age}}</h2>
-        <a :href="'/editUser?id=' + user.id"><button class="p-2 m-2 text-white bg-blue-500">Edit User</button></a>
-        <a :href="'/deleteUser?id=' + user.id"><button class="p-2 m-2 text-white bg-rose-500">Delete User</button></a>
+        <a :href="'/editUser?id=' + user._id"><button class="p-2 m-2 text-white bg-blue-500">Edit User</button></a>
+        <a :href="'/deleteUser?id=' + user._id"><button class="p-2 m-2 text-white bg-rose-500">Delete User</button></a>
     </li>`,
   data() {
     return {
