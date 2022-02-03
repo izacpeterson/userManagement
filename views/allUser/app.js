@@ -9,11 +9,11 @@ fetchData("/getAllUsers", (data) => {
 const User = {
   template: `
       <li class="flex">
-        <h2 class="w-1/6 text-xl underline">ID</h2>
-        <h2 class="w-1/6 text-xl underline">First Name</h2>
-        <h2 class="w-1/6 text-xl underline">Last Name</h2>
-        <h2 class="w-1/6 text-xl underline">Email</h2>
-        <h2 class="w-1/12 text-xl underline">Age</h2>
+        <h2 class="w-1/6 text-xl underline" @click="sort">ID <i id="id" class="fas fa-sort"></i></h2>
+        <h2  class="w-1/6 text-xl underline" @click="sort">First Name <i id="first" class="fas fa-sort"></i></h2>
+        <h2 class="w-1/6 text-xl underline" @click="sort">Last Name <i id="last" class="fas fa-sort"></i></h2>
+        <h2 class="w-1/6 text-xl underline" @click="sort">Email <i id="email" class="fas fa-sort"></i></h2>
+        <h2 class="w-1/12 text-xl underline" @click="sort">Age <i id="age" class="fas fa-sort"></i></h2>
     </li>
     <li v-for="user in users" class="flex items-center">
         <h2 class="w-1/6">{{user._id}}</h2>
@@ -27,12 +27,23 @@ const User = {
   data() {
     return {
       users: [],
+      sortParam: "",
     };
   },
   created() {
     fetchData("/getAllUsers", (data) => {
       this.users = data;
     });
+  },
+  methods: {
+    sort(event) {
+      // alert(event.target.id);
+      this.sortParam = event.target.id;
+      this.users = [];
+      fetchData("/getAllUsers?sort=" + this.sortParam, (data) => {
+        this.users = data;
+      });
+    },
   },
 };
 

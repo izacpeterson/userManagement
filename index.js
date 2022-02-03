@@ -24,11 +24,40 @@ app.use("/", express.static("views/allUser"));
 app.use("/editUser", express.static("views/editUser"));
 app.use(express.json());
 
+let searchDirection = -1;
+
 //Get all users
 app.get("/getAllUsers", (req, res) => {
-  user.find({}, {}, {}, (err, data) => {
-    res.send(data);
-  });
+  // console.log(req.query);
+  let sortParam = req.query.sort;
+
+  searchDirection *= -1;
+
+  if (sortParam == "id") {
+    user.find({}, {}, { sort: { _id: searchDirection } }, (err, data) => {
+      res.send(data);
+    });
+  } else if (sortParam == "first") {
+    user.find({}, {}, { sort: { first: searchDirection } }, (err, data) => {
+      res.send(data);
+    });
+  } else if (sortParam == "last") {
+    user.find({}, {}, { sort: { last: searchDirection } }, (err, data) => {
+      res.send(data);
+    });
+  } else if (sortParam == "email") {
+    user.find({}, {}, { sort: { email: searchDirection } }, (err, data) => {
+      res.send(data);
+    });
+  } else if (sortParam == "age") {
+    user.find({}, {}, { sort: { age: searchDirection } }, (err, data) => {
+      res.send(data);
+    });
+  } else {
+    user.find({}, {}, { sort: { age: searchDirection } }, (err, data) => {
+      res.send(data);
+    });
+  }
 });
 
 //Get a single users, by ID
